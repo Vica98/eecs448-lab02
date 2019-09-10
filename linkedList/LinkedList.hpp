@@ -37,12 +37,26 @@ bool LinkedList<T>::search(T value) const
 {
 	Node<T>* temp = m_front;
 	bool isFound = false;
-
-	/** TODO
-		Fix this method
-	*/
-
+	isFound = searchRecursive(value, temp);
 	return(isFound);
+}
+
+template <typename T>
+bool LinkedList<T>::searchRecursive(T value, Node<T>* temp) const
+{
+	if(isEmpty()==true)
+	{
+		return(false);
+	}else if(temp==nullptr)
+	{
+		return(false);
+	}else if(temp->getValue()==value)
+	{
+		return(true);
+	}else
+	{
+		return(searchRecursive(value, temp->getNext()));
+	}
 }
 
 template <typename T>
